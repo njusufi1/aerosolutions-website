@@ -1,16 +1,9 @@
-let currentIndex = 0;
-const slides = document.querySelectorAll('.slides img');
-const totalSlides = slides.length;
+const slides = document.querySelector('.slides');
+let index = 0;
 
-function showSlide(index) {
-    slides.forEach((slide, i) => {
-        slide.style.opacity = i === index ? '1' : '0';
-    });
+function showSlide() {
+    index = (index + 1) % slides.children.length;
+    slides.style.transform = `translateX(-${index * 100}%)`;
 }
 
-function nextSlide() {
-    currentIndex = (currentIndex + 1) % totalSlides;
-    showSlide(currentIndex);
-}
-
-setInterval(nextSlide, 5000);
+setInterval(showSlide, 4000);
